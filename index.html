@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><br>
+    <br><title>Le Virologiste ✨</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Public Sans Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+            background-color: #f9f9f9;
+            color: #111;
+            padding: 20px;
+        }
+
+        .text-muted {
+            color:#111
+        }
+
+        .main-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .main-title h1 {
+            font-weight: 900;
+            color: #4742FF;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .main-title p {
+            font-size: 1.1rem;
+            color: #111;
+        }
+
+    a {
+  color: #4742FF; 
+    text-decoration: underline;
+    text-decoration-color:#4742FF; 
+    text-decoration-thickness:2px; 
+    text-decoration-skip:none; 
+    text-decoration-skip-ink:none; 
+
+
+
+        
+
+}
+
+
+        .section {
+            margin-bottom: 40px;
+            background: #fff;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        h1 {
+            font-weight: 900;
+            font-size: 4.1rem;
+            color: #4742FF;
+            margin-bottom: 20px;
+        }
+
+       
+        h2 {
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: #4742FF;
+            margin-bottom: 20px;
+        }
+
+        .viral-bar-container {
+            position: relative;
+            margin-top: 20px;
+            
+        }
+
+        .viral-bar {
+            height: 30px;
+            background: linear-gradient(to right, red, orange, yellow, green);
+            border-radius: 15px;
+            position: relative;
+            width: 100%;
+        }
+
+        .viral-bar span.label-left,
+        .viral-bar span.label-right {
+            position: absolute;
+            top: -30px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .viral-bar span.label-left {
+            left: 0;
+        }
+
+        .viral-bar span.label-right {
+            right: 0;
+        }
+
+        .floating-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1.25);
+            height: 40.5px; /* 25% larger than the bar */
+            width: 40.5px;  /* 25% larger than the bar */
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            line-height: 37.5px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 50%;
+            display: block;
+            transition: left 0.5s ease, background-color 0.5s ease;
+        }
+
+        .table th {
+            background-color: #666;
+            color:#fff;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .table td {
+            vertical-align: middle;
+            text-align: left;
+        }
+
+        
+
+        .score-box {
+            display: inline-block;
+            font-size: 1.1rem;
+            width: 60px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+     
+
+    .table th, .table td {
+        border: 1px solid #dee2e6; /* Bordure droite des colonnes */
+        padding: 10px;
+        text-align: left; /* Centrer le contenu */
+    }
+
+    .center-rectangle {
+    text-align: center; /* Centre le contenu horizontalement */
+}
+
+.center-rectangle .score-box {
+    display: inline-block; /* Assure que le rectangle reste une boîte centrée */
+}
+
+   
+    </style>
+
+<style>
+    .input-group-text {
+        border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
+    }
+
+    #searchInput {
+       
+        border-color: #4742FF;
+        box-shadow: 0 4px 8px rgba(71, 66, 255, 0.1);
+        padding-left: 15px;
+    }
+
+    #searchInput:focus {
+        border-color: #4742FF;
+        outline: none;
+        box-shadow: 0 0 8px rgba(71, 66, 255, 0.5);
+    }
+
+    .btn-primary {
+        border-radius: 25px;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 1.1rem 1.5rem;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #3a37cc;
+        box-shadow: 0 4px 12px rgba(58, 55, 204, 0.5);
+    }
+</style>
+
+<style>
+    .center-rectangle {
+        text-align: center; /* Centre le contenu horizontalement */
+    }
+
+    .center-rectangle .score-box {
+        display: inline-block; /* Assure que le rectangle reste une boîte centrée */
+        width: 60px; /* Largeur uniforme pour le rectangle */
+        height: 200px; /* Hauteur uniforme pour le rectangle */
+        line-height: 30px; /* Centre le texte verticalement dans le rectangle */
+        text-align: center; /* Centre le texte horizontalement dans le rectangle */
+    }
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <!-- Main Title -->
+    <div class="main-title">
+        <h1>LE VIROLOGISTE ✨</h1>
+        <p><b><big>L'IA qui prédit (ou non) la viralité des articles de <i>20 Minutes</i></big></b></p>
+        <p>La méthodologie de ce projet expérimental <a href="#" target="_blank" style="color:#4742FF">est expliquée ici</a>.</p>
+    </div><br>
+
+    <!-- Section 1: Moteur de recherche -->
+    <div class="section">
+        <center><h2>Mon article sera-t-il viral ?</h2></center><br>
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="input-group" style="max-width: 600px;">
+                
+                <input type="text" id="searchInput" class="form-control" placeholder="Tapez votre titre..." aria-label="Recherche">
+                <button class="btn btn-primary" onclick="fetchScore()" style="background-color: #4742FF; border-color: #4742FF;">
+                    Rechercher
+                </button>
+            </div>
+        </div>
+        <p id="errorMessage" class="text-danger text-center mt-2" style="display: none;">Veuillez entrer un texte valide.</p>
+    
+
+        <div id="result" class="text-center mt-4"><br>
+            <h4><b>Score de viralité estimée (sur 100)</b></h4>
+            <div class="viral-bar-container d-flex justify-content-center align-items-center">
+                <span class="label-left" style="padding-right:20px">Peu viral</span>
+                <div class="viral-bar">
+                    <div id="floatingLabel" class="floating-label">--</div>
+                </div>
+                <span class="label-right" style="padding-left:20px">Super viral</span>
+            </div>
+        </div><br>
+    </div>
+<br>
+        <!-- Section 2: Tableau des prédictions -->
+        <div class="section">
+            <h2><big>⟳</big> Viralité estimée des articles récents </h2>
+            <p class="text-muted">Voici les derniers articles paru sur le site de <i>20 Minutes</i> et les estimations de notre IA sur leur viralité.</p>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">TITRE DE L'ARTICLE</th>
+                        <th scope="col">DATE</th>
+                        <th scope="col">LIEN</th>
+                        <th scope="col" style="width: 7%; text-align: center;">VIRALITÉ RÉELLE</th>
+                    </tr>
+                </thead>
+                <tbody id="predictionsTable">
+                    <!-- Dynamically loaded rows -->
+                </tbody>
+            </table>
+        </div>
+    
+        <script>
+            const SHEET_ID = "16hzznOpyv7s9EyZpEqBzbpx4ZaJI35qFBPLGLBFhwnI";
+            const API_KEY = "AIzaSyBevoEWdqqTR1RyT4GAaLM9TEdTRaPmAsY";
+            const SHEET_RANGE = "TABLEAU1!A1:D";
+    
+            async function loadPredictions() {
+                const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_RANGE}?key=${API_KEY}`;
+    
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error(`Erreur API Google Sheets : ${response.status}`);
+                    }
+    
+                    const data = await response.json();
+                    const rows = data.values.slice(1); // Ignorer la première ligne (en-têtes)
+                    const tableBody = document.getElementById('predictionsTable');
+    
+                    rows.forEach(row => {
+                        const tr = document.createElement('tr');
+                        const color = getColorForScore(row[3]);
+                        tr.innerHTML = `
+                            <td>${row[0]}</td>
+                            <td>${row[1]}</td>
+                            <td><a href="${row[2]}" target="_blank">Lien</a></td>
+                            <td class="center-rectangle"><div class="score-box" style="background-color: ${color};">${row[3]}</div></td>
+                        `;
+                        tableBody.appendChild(tr);
+                    });
+                } catch (error) {
+                    console.error("Erreur lors du chargement des prédictions :", error);
+                }
+            }
+    
+            function getColorForScore(score) {
+                score = parseInt(score, 10);
+    
+                const colors = [
+                    '#FF0801', // Rouge foncé
+                    '#FF5807', // Rouge moyen
+                    '#FF8306', // Orange clair
+                    '#FFB300', // Jaune-orangé
+                    '#FFDA00', // Jaune-marron
+                    '#FFF201', // Jaune clair
+                    '#C7DF00', // Jaune lumineux
+                    '#94C001', // Jaune-vert clair
+                    '#539E00', // Vert clair
+                    '#048001'  // Vert foncé
+                ];
+    
+                if (score <= 10) return colors[0];
+                if (score <= 20) return colors[1];
+                if (score <= 30) return colors[2];
+                if (score <= 40) return colors[3];
+                if (score <= 50) return colors[4];
+                if (score <= 60) return colors[5];
+                if (score <= 70) return colors[6];
+                if (score <= 80) return colors[7];
+                if (score <= 90) return colors[8];
+                return colors[9];
+            }
+    
+            document.addEventListener('DOMContentLoaded', () => {
+                loadPredictions();
+            });
+
+
+            async function fetchScore() {
+    const input = document.getElementById('searchInput').value.trim();
+    const floatingLabel = document.getElementById('floatingLabel');
+    const errorMessage = document.getElementById('errorMessage');
+
+    // Réinitialise le message d'erreur
+    errorMessage.style.display = 'none';
+
+    if (!input) {
+        // Affiche un message d'erreur si l'entrée est vide
+        errorMessage.textContent = 'Veuillez entrer un texte valide.';
+        errorMessage.style.display = 'block';
+        return;
+    }
+
+    try {
+        const response = await fetch('https://api-basique.onrender.com/score', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ text: input }),
+        });
+
+        if (!response.ok) {
+            throw new Error(`Erreur API : ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        const score = parseInt(data.score, 10);
+        const percentage = Math.min(100, Math.max(0, score));
+
+        floatingLabel.style.left = `${percentage}%`;
+        floatingLabel.style.display = 'block';
+        floatingLabel.textContent = `${score}`;
+
+        // Change la couleur de fond du label flottant en fonction du score
+        const color = getColorForScore(score);
+        floatingLabel.style.backgroundColor = 'black';
+
+        // Met le texte en blanc pour un meilleur contraste
+        floatingLabel.style.color = 'white';
+
+    } catch (error) {
+        console.error('Erreur lors de la recherche :', error);
+        errorMessage.textContent = 'Une erreur s\'est produite. Veuillez réessayer plus tard.';
+        errorMessage.style.display = 'block';
+    }
+}
+        </script>
+    
+        <style>
+            .center-rectangle {
+                text-align: center; /* Centre le contenu horizontalement */
+            }
+    
+            .center-rectangle .score-box {
+                display: inline-block; /* Assure que le rectangle reste une boîte centrée */
+                width: 60px; /* Largeur uniforme pour le rectangle */
+                height: 30px; /* Hauteur uniforme pour le rectangle */
+                line-height: 30px; /* Centre le texte verticalement dans le rectangle */
+                text-align: center; /* Centre le texte horizontalement dans le rectangle */
+            }
+        </style>
+    
+
+<!-- Section 3: Comparaison des Prédictions et de la Réalité -->
+<div class="section" style="margin: 0 auto;">
+    <h2>± Comparaison des prédictions et de la viralité réelle</h2>
+    <p class="text-muted">Ce tableau compare la viralité prévue par notre IA, et la réalité en vrai.</p>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">TITRE DE L'ARTICLE</th>
+                <th scope="col">DATE</th>
+                <th scope="col">LIEN</th>
+                <th scope="col" style="width: 7%; text-align: center;">VIRALITÉ ESTIMÉE</th>
+                <th scope="col" style="width: 7%; text-align: center;">VIRALITÉ RÉELLE</th>
+            </tr>
+        </thead>
+        <tbody id="comparisonTable">
+            <!-- Dynamically loaded rows -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    const SHEET_RANGE_COMPARISON = "TABLEAU2!A1:E";
+
+    async function loadComparison() {
+        const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_RANGE_COMPARISON}?key=${API_KEY}`;
+
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`Erreur API Google Sheets : ${response.status}`);
+            }
+
+            const data = await response.json();
+            const rows = data.values.slice(1); // Ignorer la première ligne (en-têtes)
+            const tableBody = document.getElementById('comparisonTable');
+
+            rows.forEach(row => {
+                const tr = document.createElement('tr');
+                const predictedColor = getColorForScore(row[3]);
+                const actualColor = getColorForScore(row[4]);
+
+                tr.innerHTML = `
+                    <td>${row[0]}</td>
+                    <td>${row[1]}</td>
+                    <td><a href="${row[2]}" target="_blank">Lien</a></td>
+                    <td style="text-align: center;"><div class="score-box" style="background-color: ${predictedColor}; display: inline-block;">${row[3]}</div></td>
+                    <td style="text-align: center;"><div class="score-box" style="background-color: ${actualColor}; display: inline-block;">${row[4]}</div></td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        } catch (error) {
+            console.error("Erreur lors du chargement des comparaisons :", error);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Load the comparison data
+        loadComparison();
+    });
+</script>
+
+
+
+
+</body>
+</html>
